@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Nhập / Đăng Ký - Cổ Trang</title>
+  
+  <!-- Google Font cổ trang -->
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+  <style>
+    /* ======== Reset ======== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'MedievalSharp', cursive;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fbe8c4, #a35d1b);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ======== Background Animation ======== */
+    body::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,200,150,0.2) 1%, transparent 1%) repeat;
+      background-size: 50px 50px;
+      animation: rotateBG 60s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotateBG {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ======== Form Container ======== */
+    .login-container {
+      position: relative;
+      z-index: 1;
+      width: 350px;
+      padding: 40px 30px;
+      background: rgba(255, 248, 230, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-50px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+
+    .login-container h1 {
+      font-size: 2rem;
+      color: #6b3e1a;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* ======== Tab Buttons ======== */
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab-buttons button {
+      flex: 1;
+      padding: 10px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #e09f3e, #d67f2a);
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .tab-buttons button.active {
+      background: linear-gradient(45deg, #d67f2a, #e09f3e);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .tab-buttons button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ======== Input Fields ======== */
+    .login-container input {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 12px 0;
+      border: 2px solid #a35d1b;
+      border-radius: 10px;
+      background: #fff4e0;
+      color: #5c2e1a;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .login-container input:focus {
+      border-color: #e09f3e;
+      box-shadow: 0 0 10px rgba(224,159,62,0.5);
+      outline: none;
+    }
+
+    /* ======== Submit Button ======== */
+    .login-container button.submit-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #e09f3e, #d67f2a);
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.4s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .login-container button.submit-btn:hover {
+      background: linear-gradient(45deg, #d67f2a, #e09f3e);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* ======== Form Sections ======== */
+    .form-section {
+      display: none;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    /* ======== Floating Ornaments ======== */
+    .ornament {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(224,159,62,0.6);
+      animation: floatUp 6s infinite ease-in-out;
+    }
+
+    .ornament:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .ornament:nth-child(2) { left: 50%; animation-delay: 2s; }
+    .ornament:nth-child(3) { left: 80%; animation-delay: 4s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1);}
+      50% { transform: translateY(-30px) scale(1.2);}
+      100% { transform: translateY(0) scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Ornaments -->
+  <div class="ornament"></div>
+  <div class="ornament"></div>
+  <div class="ornament"></div>
+
+  <!-- Login / Register Form -->
+  <div class="login-container">
+    <h1 id="form-title">Đăng Nhập</h1>
+    
+    <!-- Tab Buttons -->
+    <div class="tab-buttons">
+      <button id="login-tab" class="active">Đăng Nhập</button>
+      <button id="register-tab">Đăng Ký</button>
+    </div>
+
+    <!-- Đăng Nhập -->
+    <div id="login-form" class="form-section active">
+      <form onsubmit="login(event)">
+        <input type="text" id="username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <button type="submit" class="submit-btn">Đăng Nhập</button>
+      </form>
+    </div>
+
+    <!-- Đăng Ký -->
+    <div id="register-form" class="form-section">
+      <form onsubmit="register(event)">
+        <input type="text" id="reg-username" placeholder="Tên đăng nhập" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Mật khẩu" required>
+        <button type="submit" class="submit-btn">Đăng Ký</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Chuyển tab
+    const loginTab = document.getElementById('login-tab');
+    const registerTab = document.getElementById('register-tab');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const formTitle = document.getElementById('form-title');
+
+    loginTab.addEventListener('click', () => {
+      loginTab.classList.add('active');
+      registerTab.classList.remove('active');
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+      formTitle.textContent = "Đăng Nhập";
+    });
+
+    registerTab.addEventListener('click', () => {
+      registerTab.classList.add('active');
+      loginTab.classList.remove('active');
+      registerForm.classList.add('active');
+      loginForm.classList.remove('active');
+      formTitle.textContent = "Đăng Ký";
+    });
+
+    // Hàm đăng nhập
+    function login(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      if(username && password){
+        document.querySelector('.login-container').style.opacity = '0';
+        setTimeout(() => {
+          window.location.href = 'main.html';
+        }, 600);
+      } else {
+        alert('Vui lòng điền đầy đủ thông tin đăng nhập!');
+      }
+    }
+
+    // Hàm đăng ký
+    function register(event) {
+      event.preventDefault();
+      const username = document.getElementById('reg-username').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const password = document.getElementById('reg-password').value.trim();
+      if(username && email && password){
+        alert('Đăng ký thành công! Vui lòng đăng nhập.');
+        loginTab.click(); // tự động chuyển sang đăng nhập
+      } else {
+        alert('Vui lòng điền đầy đủ thông tin đăng ký!');
+      }
+    }
+  </script>
+</body>
+</html>
