@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cà-phê Phương Nguyên</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #6b635c, #9e8b6d);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(90deg, #5a0e0e, #8b1e1e);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.5em;
+      color: #ffd700;
+      text-shadow: 2px 2px 4px #000;
+      animation: glow 2s infinite alternate;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+      color: #ffd700;
+      text-shadow: 3px 3px 6px #000;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 a {
+      color: #ffd700;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .hero h1 a:hover {
+      color: #ffcc33;
+      text-shadow: 0 0 12px #ffcc33;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 25px;
+    }
+
+    .hero button {
+      padding: 12px 25px;
+      font-size: 1em;
+      font-weight: bold;
+      background: #ffd700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .hero button:hover {
+      background: #ffcc33;
+      transform: scale(1.1);
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: #6b2d2d;
+      text-shadow: 2px 2px 4px #fff;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .item {
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: 0.3s;
+      transform: scale(1);
+    }
+
+    .item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background: #5a0e0e;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #ffd700;
+      position: relative;
+      box-shadow: 0 -4px 6px rgba(0,0,0,0.3);
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ffcc33; }
+      to { text-shadow: 0 0 20px #fff, 0 0 30px #ffcc33; }
+    }
+
+    /* Hiệu ứng ngọn lửa */
+    .fire {
+      position: absolute;
+      width: 20px;
+      height: 40px;
+      background: radial-gradient(circle, #ff9933, #ff3300, transparent);
+      border-radius: 50%;
+      animation: fireMove 6s infinite ease-in-out;
+      opacity: 0.8;
+    }
+
+    @keyframes fireMove {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-200px) scale(1.2); opacity: 0.4; }
+      100% { transform: translateY(0) scale(1); opacity: 0.8; }
+    }
+
+    /* Highlight Menu */
+    #menu.highlight {
+      animation: highlightMenu 1.5s ease-in-out;
+      border: 3px solid #ffd700;
+      border-radius: 15px;
+      padding: 50px 25px;
+    }
+
+    @keyframes highlightMenu {
+      0%   { box-shadow: 0 0 0px #ffd700; }
+      50%  { box-shadow: 0 0 30px #ffd700; }
+      100% { box-shadow: 0 0 0px #ffd700; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>☕ Cà-phê Phương Nguyên</h1>
+    <nav>
+      <a href="main.html">Trang chủ</a>
+      <a href="about.html">Giới thiệu</a>
+      <a href="contact.html">Liên hệ</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>
+      <a href="#menu" class="hero-link">
+        Chào mừng đến với <span>Cà-phê Phương Nguyên</span>
+      </a>
+    </h1>
+    <p>🌸 Hương vị nguyên bản — 🌿 Không gian cổ trang — 🎶 Thư giãn và sáng tạo</p>
+    <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Khám phá Menu</button>
+  </section>
+
+  <section id="menu">
+    <h2>Menu đồ uống</h2>
+    <div class="menu-items">
+      <div class="item">
+        <img src="https://mediamart.vn/images/uploads/data-2022/ghj-BOsK1B.jpg" alt="Cà phê đen">
+        <h3>Cà phê truyền thống</h3>
+        <p>Cà phê phin đậm đà, hương thơm nồng nàn, phù hợp cho những ai yêu thích vị đắng nguyên bản.</p>
+        <p><strong>35.000đ</strong></p>
+      </div>
+      <div class="item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Cappuccino_at_Sightglass_Coffee.jpg/1200px-Cappuccino_at_Sightglass_Coffee.jpg" alt="Cappuccino">
+        <h3>Cappuccino</h3>
+        <p>Cà phê Ý với lớp bọt sữa mịn màng, tạo hình nghệ thuật, thích hợp cho những buổi trò chuyện thư giãn.</p>
+        <p><strong>50.000đ</strong></p>
+      </div>
+      <div class="item">
+        <img src="https://gatherforbread.com/wp-content/uploads/2014/10/Dark-Chocolate-Mocha-1-683x1024.jpg" alt="Mocha">
+        <h3>Mocha</h3>
+        <p>Sự hòa quyện giữa cà phê, chocolate và sữa tươi, mang lại cảm giác ngọt ngào và ấm áp.</p>
+        <p><strong>60.000đ</strong></p>
+      </div>
+      <div class="item">
+        <img src="https://www.thespruceeats.com/thmb/HJrjMfXdLGHbgMhnM0fMkDx9XPQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-is-espresso-765702-hero-03_cropped-ffbc0c7cf45a46ff846843040c8f370c.jpg" alt="Espresso">
+        <h3>Espresso</h3>
+        <p>Cà phê nguyên chất được chiết xuất nhanh, hương vị mạnh mẽ, dành cho người yêu thích sự đậm đặc.</p>
+        <p><strong>45.000đ</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Cà-phê Phương Nguyên. Tất cả các quyền được bảo lưu.</p>
+  </footer>
+
+  <!-- Hiệu ứng ngọn lửa bay + highlight menu -->
+  <script>
+    function createFire() {
+      const fire = document.createElement('div');
+      fire.classList.add('fire');
+      fire.style.left = Math.random() * window.innerWidth + 'px';
+      fire.style.top = (Math.random() * 500 + 200) + 'px';
+      fire.style.animationDuration = (3 + Math.random() * 3) + 's';
+      document.body.appendChild(fire);
+
+      setTimeout(() => {
+        fire.remove();
+      }, 6000);
+    }
+
+    setInterval(createFire, 800);
+
+    // Highlight menu khi scroll tới
+    const menuSection = document.getElementById("menu");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          menuSection.classList.add("highlight");
+          setTimeout(() => {
+            menuSection.classList.remove("highlight");
+          }, 1600);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(menuSection);
+  </script>
+</body>
+</html>

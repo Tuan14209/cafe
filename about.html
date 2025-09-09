@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giới thiệu - Cà-phê Phương Nguyên</title>
+
+  <style>
+    :root{
+      --brown: #5c3d2e;
+      --brown-dark: #3a241c;
+      --light: #f5f0e1;
+      --muted: #fff8f0;
+      --gold: #e6b800;
+      --text: #2b1f17;
+      --max-width: 1200px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: 'Segoe UI', Roboto, Arial;
+      color:var(--text);
+      background:linear-gradient(135deg,#fffaf5,#fbe8c7,#f7dba7);
+      line-height:1.6;
+      position: relative;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      top:0;left:0;right:0;bottom:0;
+      background: url('https://www.transparenttextures.com/patterns/wood-pattern.png') repeat;
+      opacity:0.05;
+      z-index:-1;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:1rem}
+    .site-header{
+      background:linear-gradient(90deg,var(--brown-dark),var(--brown));
+      color:var(--light);
+      padding:0.8rem 0;
+      position:sticky;top:0;z-index:10;
+      box-shadow:0 4px 15px rgba(0,0,0,0.4);
+      animation:slideDown 1s ease;
+    }
+    @keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+
+    .header-inner{display:flex;align-items:center;justify-content:space-between}
+
+    /* --- Logo gradient sặc sỡ --- */
+    .logo{
+      font-weight:700;
+      font-size:1.5rem;
+      color:var(--light);
+      text-decoration:none;
+      letter-spacing:1px;
+      background: linear-gradient(45deg, #ff5f6d, #ffc371, #7bed9f, #70a1ff, #ff6b81);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition:0.4s;
+    }
+    .logo span{color:var(--gold)}
+    .logo:hover{
+      transform: scale(1.1) rotate(-2deg);
+      text-shadow:0 0 8px #fff;
+    }
+
+    /* Nav link */
+    .nav a{
+      color:var(--light);
+      margin-left:1.2rem;
+      text-decoration:none;
+      font-weight:500;
+      transition:0.3s;
+      position:relative;
+    }
+    .nav a::after{
+      content:"";
+      position:absolute;
+      width:0%;height:2px;
+      bottom:-4px;left:0;
+      background:var(--gold);
+      transition:0.4s;
+    }
+    .nav a:hover{
+      background: linear-gradient(45deg, #ff6b6b, #ff9f43, #1dd1a1, #5f27cd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+    .nav a:hover::after{width:100%}
+
+    /* Section title gradient */
+    .section-title{
+      font-size:2.2rem;
+      margin:2rem 0 1rem;
+      text-align:center;
+      font-weight:700;
+      position:relative;
+      background: linear-gradient(90deg, #ff6b6b, #ff9f43, #1dd1a1, #5f27cd, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation:fadeIn 1.5s ease;
+    }
+    .section-title::after{
+      content:"✨";
+      position:absolute;
+      left:50%;
+      bottom:-1.5rem;
+      transform:translateX(-50%);
+      font-size:1.8rem;
+      animation:glow 2s infinite;
+    }
+    .section-title.no-icon::after{content:none}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes glow{0%,100%{opacity:1;text-shadow:0 0 8px gold}50%{opacity:0.5;text-shadow:none}}
+
+    .content-box{
+      background:linear-gradient(180deg,#fff,var(--light));
+      border-radius:15px;
+      border:1px solid #ddd;
+      box-shadow:0 6px 20px rgba(43,31,23,0.1);
+      padding:1.5rem;
+      margin-bottom:2rem;
+      opacity:0;
+      transform:translateY(50px) scale(0.98);
+      animation:fadeZoom 1s forwards;
+    }
+    .content-box h3{
+      margin-bottom:0.6rem;
+      font-size:1.3rem;
+      background: linear-gradient(120deg, #ff6b6b, #ff9f43, #1dd1a1, #5f27cd, #f368e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+
+    .content-box:nth-child(1){animation-delay:0.3s}
+    .content-box:nth-child(2){animation-delay:0.6s}
+    .content-box:nth-child(3){animation-delay:0.9s}
+    .content-box:nth-child(4){animation-delay:1.2s}
+
+    @keyframes fadeZoom{to{opacity:1;transform:translateY(0) scale(1)}}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:1rem 0;
+      overflow:hidden;
+      border-radius:10px;
+    }
+    th,td{border:1px solid #ddd;padding:0.8rem;text-align:left;vertical-align:top}
+    th{
+      background: linear-gradient(135deg, #ff6b6b, #ff9f43, #1dd1a1);
+      color:white;font-weight:600;
+    }
+    tr:hover{background:#fff3d4;transition:0.3s}
+
+    .video-box{
+      position:relative;
+      padding-bottom:56.25%;
+      height:0;
+      overflow:hidden;
+      border-radius:15px;
+      box-shadow:0 8px 25px rgba(43,31,23,0.3);
+      margin:1rem 0;
+      animation:fadeIn 2s ease;
+    }
+    .video-box iframe,
+    .video-box video{
+      position:absolute;
+      top:0;left:0;width:100%;height:100%;
+      border-radius:15px;
+    }
+
+    .site-footer{
+      background:linear-gradient(180deg,var(--brown-dark),var(--brown));
+      color:var(--light);
+      padding:1.5rem 0;
+      margin-top:2rem;
+      position:relative;
+      overflow:hidden;
+    }
+    .site-footer::before{
+      content:"";
+      position:absolute;
+      width:200%;
+      height:200%;
+      top:-50%;left:-50%;
+      background:radial-gradient(circle at center, rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size:40px 40px;
+      animation:moveStars 25s linear infinite;
+    }
+    @keyframes moveStars{from{transform:translate(0,0)}to{transform:translate(50px,50px)}}
+
+    .footer-inner{display:flex;justify-content:space-between;align-items:center}
+    .footer-nav a{
+      color:var(--light);
+      margin-left:1rem;
+      transition:0.3s;
+    }
+    .footer-nav a:hover{
+      background: linear-gradient(45deg, #ff6b6b, #ff9f43, #1dd1a1, #5f27cd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    @media(max-width:900px){
+      .footer-inner{flex-direction:column;gap:0.8rem;text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="main.html">Cà-phê <span>Phương Nguyên</span></a>
+      <nav class="nav">
+        <a href="main.html">Trang chủ</a>
+        <a href="about.html">Giới thiệu</a>
+        <a href="contact.html">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="section-title no-icon">Giới thiệu về quán</h1>
+
+    <div class="content-box">
+      <h3>🏮 Lịch sử hình thành</h3>
+      <p>Cà-phê Phương Nguyên được thành lập từ năm 2010 với mong muốn mang đến hương vị cà phê nguyên bản, giữ trọn vẹn tinh hoa hạt cà phê Việt Nam. Chúng tôi tự hào là điểm hẹn của những tâm hồn yêu thích sự tĩnh lặng, sáng tạo và gắn kết.</p>
+    </div>
+
+    <div class="content-box">
+      <h3>🌿 Không gian phục vụ</h3>
+      <p>Không gian quán được thiết kế ấm cúng, kết hợp giữa phong cách truyền thống và hiện đại. Khách hàng có thể lựa chọn chỗ ngồi trong nhà hoặc ngoài trời, tùy theo sở thích.</p>
+      <table>
+        <tr>
+          <th>Khu vực</th>
+          <th>Sức chứa</th>
+          <th>Đặc điểm</th>
+        </tr>
+        <tr>
+          <td>Trong nhà</td>
+          <td>50 khách</td>
+          <td>Máy lạnh, nhạc nhẹ, bàn nhóm & cá nhân</td>
+        </tr>
+        <tr>
+          <td>Ngoài trời</td>
+          <td>30 khách</td>
+          <td>Thoáng mát, phù hợp trò chuyện & làm việc</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="content-box">
+      <h3>☕ Các loại cà phê đặc trưng</h3>
+      <p>Chúng tôi phục vụ đa dạng các loại cà phê, được chọn lọc từ hạt cà phê chất lượng cao. Mỗi ly cà phê đều mang hương vị riêng, phù hợp với gu thưởng thức khác nhau.</p>
+      <table>
+        <tr>
+          <th>Tên đồ uống</th>
+          <th>Giá</th>
+          <th>Mô tả</th>
+        </tr>
+        <tr>
+          <td>Cà phê truyền thống</td>
+          <td>35.000đ</td>
+          <td>Cà phê phin đậm đà, hương thơm nồng nàn, phù hợp cho những ai yêu thích vị đắng nguyên bản.</td>
+        </tr>
+        <tr>
+          <td>Cà phê sữa đá</td>
+          <td>40.000đ</td>
+          <td>Sự kết hợp hài hòa giữa vị đắng của cà phê và vị ngọt béo của sữa đặc, mang đậm phong cách Việt Nam.</td>
+        </tr>
+        <tr>
+          <td>Cappuccino</td>
+          <td>50.000đ</td>
+          <td>Cà phê Ý với lớp bọt sữa mịn màng, tạo hình nghệ thuật, thích hợp cho những buổi trò chuyện thư giãn.</td>
+        </tr>
+        <tr>
+          <td>Latte</td>
+          <td>55.000đ</td>
+          <td>Sự kết hợp tinh tế giữa cà phê espresso và sữa tươi, vị nhẹ nhàng, phù hợp cho cả nam và nữ.</td>
+        </tr>
+        <tr>
+          <td>Mocha</td>
+          <td>60.000đ</td>
+          <td>Sự hòa quyện giữa cà phê, chocolate và sữa tươi, mang lại cảm giác ngọt ngào và ấm áp.</td>
+        </tr>
+        <tr>
+          <td>Espresso</td>
+          <td>45.000đ</td>
+          <td>Cà phê nguyên chất được chiết xuất nhanh, hương vị mạnh mẽ, dành cho người yêu thích sự đậm đặc.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="content-box">
+      <h3>🎥 Video giới thiệu</h3>
+      <div class="video-box">
+        <!-- Video YouTube -->
+        <iframe src="https://www.youtube.com/embed/4q3sJZ3gkYc" title="Giới thiệu quán cà phê" frameborder="0" allowfullscreen></iframe>
+        <!-- Video MP4 từ Pixabay -->
+        <video autoplay muted loop controls>
+          <source src="https://cdn.pixabay.com/video/2022/04/04/112890-696273028_large.mp4" type="video/mp4">
+          Trình duyệt của bạn không hỗ trợ video.
+        </video>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Cà-phê Phương Nguyên</p>
+      <nav class="nav footer-nav">
+        <a href="main.html">Trang chủ</a>
+        <a href="about.html">Giới thiệu</a>
+        <a href="contact.html">Liên hệ</a>
+        <a href="mailto:info@phuongnguyencoffee.vn">Email</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
